@@ -30,9 +30,9 @@ jobs:
           name: dist
           path: dist
 
-      # setup-uv publishes exact versions only, no major tag
-      - uses: astral-sh/setup-uv@v10.2.0
+      # PyPA's action and not `uv publish`: under trusted publishing it signs each file
+      # and uploads a PEP 740 attestation beside it, which PyPI shows on the file's page
+      # and the project's Security tab. uv uploads attestations but makes none.
+      - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          version: "0.12.18"
-
-      - run: uv publish --trusted-publishing always dist/*
+          packages-dir: dist/
