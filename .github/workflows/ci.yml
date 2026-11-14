@@ -1,0 +1,16 @@
+name: CI
+
+# Lint, build and test against statsbadge from source, by statsbadge's own rules. The steps
+# are statsbadge's, so every extension is checked the same way.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    uses: pimoroni/statsbadge/.github/workflows/extension.yml@main

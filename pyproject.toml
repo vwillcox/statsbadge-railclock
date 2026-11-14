@@ -1,0 +1,32 @@
+[project]
+name = "statsbadge-railclock"
+dynamic = ["version"]
+description = "A Rail Clock page for statsbadge: the time inside two rings of sweeping chevrons"
+readme = "README.md"
+authors = [
+    { name = "Vincent Willcox" },
+]
+license = "MIT AND OFL-1.1"
+license-files = ["LICENSE", "src/statsbadge_railclock/OFL-Inter.txt"]
+requires-python = ">=3.11"
+dependencies = ["statsbadge>=3.0.0"]
+
+[project.urls]
+Homepage = "https://github.com/vwillcox/statsbadge-railclock"
+Repository = "https://github.com/vwillcox/statsbadge-railclock"
+Issues = "https://github.com/vwillcox/statsbadge-railclock/issues"
+
+# The whole extension mechanism is this one entry point:
+[project.entry-points."statsbadge.sources"]
+railclock = "statsbadge_railclock:RailClock"
+
+# The tag is the version.
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/statsbadge_railclock"]
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
